@@ -1,0 +1,102 @@
+<mvc:View controllerName="com.ks.modelzten_json_model.controller.View1" xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns="sap.suite.ui.commons" xmlns:m="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:viz="sap.viz.ui5.controls" xmlns:layout="sap.ui.layout"
+	xmlns:core="sap.ui.core" height="100%">
+	<m:Page  title="Bookings">
+		<!--<m:headerContent>  for page class="sapDemokitSuiteChartContainerFixFlex"-->
+		<!--</m:headerContent>-->
+		<m:customHeader>
+			<m:OverflowToolbar class="sapUiNoMarginTop">
+				 <m:Label text = 'Duration' class='settingsLabel'></m:Label>
+				<m:Select id='chartTypeSelect' class='settingsSelect' selectedKey='{/chartType/defaultSelected}' maxWidth="150px" change='onTimeChanged'>    
+                            <!--items="{path: '/chartType/values'}"-->
+                            <m:items>
+                                <!--<core:Item text="{name}" key="{key}" />-->
+                                 <core:Item text="YTD" key="ytd" />
+                                 <core:Item text="MTD" key="mtd" />
+                                 <core:Item text="Day" key="day" />
+                                 <core:Item text="Year" key="year" />
+                            </m:items>
+                        </m:Select>
+			<m:ToolbarSpacer/>
+			<m:Text text="Bookings"/>
+			<m:ToolbarSpacer/>
+			<m:ToggleButton id="scopeToggleBtn" icon="sap-icon://company-view" text="Company Data" press="onChangeDataScope" />
+		</m:OverflowToolbar>
+		</m:customHeader>
+		<m:content>
+				<viz:Popover id="idPopOver"></viz:Popover>
+				<layout:Grid defaultSpan="L6 M12 S12" class="sapUiLargeMarginTop">
+		<layout:content>
+				
+							<!--<m:layoutData>-->
+							<!--	<layout:GridData span="L0 M0 S12" />-->
+							<!--</m:layoutData>-->
+					<ChartContainer id="chartContainer" showFullScreen="true" showPersonalization="false" autoAdjustHeight="true"
+						personalizationPress="attachPersonalizationPress" contentChange="attachContentChange" title="1st out of 10">
+						<content>
+						
+							<ChartContainerContent icon="sap-icon://line-chart" title="Line Chart">
+								<content>
+									<viz:VizFrame id="chartContainerVizFrame" height="400px" width="100%" uiConfig="{applicationSet:'fiori'}"></viz:VizFrame>
+								</content>
+							</ChartContainerContent>
+							<ChartContainerContent icon="sap-icon://table-view" title="Table">
+								<content>
+									<m:Table id="chartContainerContentTable"></m:Table>
+								</content>
+							</ChartContainerContent>
+						</content>
+					</ChartContainer>
+					<!--<m:Text text="test"></m:Text>-->
+					<ChartContainer id="chartContainer2" showFullScreen="true" showPersonalization="false" autoAdjustHeight="true"
+						personalizationPress="attachPersonalizationPress" contentChange="attachContentChange" title="Revenue2">
+						<content>
+							<ChartContainerContent icon="sap-icon://line-chart" title="Line Chart2">
+								<content>
+									<viz:VizFrame id="chartContainerVizFrame2" height="400px" width="100%" uiConfig="{applicationSet:'fiori'}"></viz:VizFrame>
+								</content>
+							</ChartContainerContent>
+							<ChartContainerContent icon="sap-icon://table-view" title="Table">
+								<content>
+									<m:Table id="chartContainerContentTable2"></m:Table>
+								</content>
+							</ChartContainerContent>
+							</content>
+							</ChartContainer>
+							
+					<m:VBox>
+								<ChartContainer id="chartContainer3" showFullScreen="true" showPersonalization="false" autoAdjustHeight="true"
+						personalizationPress="attachPersonalizationPress" contentChange="attachContentChange" title="Revenue2">
+						<content>
+								<ChartContainerContent icon="sap-icon://table-view" title="Table">
+								<content>
+									<m:Table id="chartContainerContentTable3">
+									</m:Table>
+								</content>
+							
+							</ChartContainerContent>
+							<ChartContainerContent icon="sap-icon://line-chart" title="Line Chart2">
+								<content>
+									<viz:VizFrame id="chartContainerVizFrame3" height="400px" width="100%" uiConfig="{applicationSet:'fiori'}">
+											
+									</viz:VizFrame>
+								</content>
+							</ChartContainerContent>
+						
+										
+							</content>
+						
+							</ChartContainer>
+										<m:layoutData>
+								<layout:GridData span="L12 M12 S12" />
+							</m:layoutData>
+							</m:VBox>
+							
+							<!--<m:Table id="chartContainerContentTable3">-->
+								
+							<!--</m:Table>-->
+					</layout:content>
+	</layout:Grid>
+		</m:content>
+	</m:Page>
+</mvc:View>

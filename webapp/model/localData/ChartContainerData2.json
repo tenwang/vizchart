@@ -1,0 +1,128 @@
+{
+	"Areas": [
+		{
+			"Area": "A1",
+			"Booking": 200,
+			"Quota": 100
+		},
+		{
+			"Area": "A2",
+			"Booking": 180,
+			"Quota": 150
+		},
+		{
+			"Area": "A3",
+			"Booking": 120,
+			"Quota": 100
+		},
+		{
+			"Area": "A4",
+			"Booking": 100,
+			"Quota": 100
+		},
+		{
+			"Area": "A5",
+			"Booking": 80,
+			"Quota": 100
+		},
+		{
+			"Area": "A6",
+			"Booking": 70,
+			"Quota": 100
+		},
+		{
+			"Area": "A7",
+			"Booking": 50,
+			"Quota": 100
+		},
+		{
+			"Area": "A8",
+			"Booking": 10,
+			"Quota": 100
+		}
+	],
+	"Regions": [
+		{
+			"Area": "R1",
+			"Booking": 200,
+			"Quota": 100
+		},
+		{
+			"Area": "R2",
+			"Booking": 180,
+			"Quota": 150
+		},
+		{
+			"Area": "R3",
+			"Booking": 120,
+			"Quota": 100
+		},
+		{
+			"Area": "R4",
+			"Booking": 100,
+			"Quota": 100
+		},
+		{
+			"Area": "R5",
+			"Booking": 80,
+			"Quota": 100
+		},
+		{
+			"Area": "R6",
+			"Booking": 70,
+			"Quota": 100
+		},
+		{
+			"Area": "R7",
+			"Booking": 50,
+			"Quota": 100
+		},
+		{
+			"Area": "R8",
+			"Booking": 10,
+			"Quota": 100
+		}
+	],
+	"Territories": [
+		{
+			"Area": "T1",
+			"Booking": 200,
+			"Quota": 100
+		},
+		{
+			"Area": "T2",
+			"Booking": 180,
+			"Quota": 150
+		},
+		{
+			"Area": "T3",
+			"Booking": 120,
+			"Quota": 100
+		},
+		{
+			"Area": "T4",
+			"Booking": 100,
+			"Quota": 100
+		},
+		{
+			"Area": "T5",
+			"Booking": 80,
+			"Quota": 100
+		},
+		{
+			"Area": "T6",
+			"Booking": 70,
+			"Quota": 100
+		},
+		{
+			"Area": "T7",
+			"Booking": 50,
+			"Quota": 100
+		},
+		{
+			"Area": "T8",
+			"Booking": 10,
+			"Quota": 100
+		}
+	]
+}
