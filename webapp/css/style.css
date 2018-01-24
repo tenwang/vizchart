@@ -2,3 +2,10 @@
 /*.sapDemokitSuiteChartContainerFixFlex {*/
 /*	position: absolute;*/
 /*}*/
+
+.green{
+	background-color: #66FF33 !important;
+}
+/*.tableClass tr:nth-child(even) {*/
+/*    background-color: #FF0011;*/
+/*}*/

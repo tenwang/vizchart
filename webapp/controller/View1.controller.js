@@ -70,7 +70,7 @@ sap.ui.define(['sap/ui/core/mvc/Controller', 'sap/ui/model/json/JSONModel', 'sap
 					},
 					regionDataset: {
 						dimensions: [{
-							name: 'Area',
+							name: 'Region',
 							value: "{Area}"
 						}],
 						measures: [{
@@ -84,7 +84,7 @@ sap.ui.define(['sap/ui/core/mvc/Controller', 'sap/ui/model/json/JSONModel', 'sap
 					},
 					territoryDataset: {
 						dimensions: [{
-							name: 'Area',
+							name: 'Territory',
 							value: "{Area}"
 						}],
 						measures: [{
@@ -100,10 +100,33 @@ sap.ui.define(['sap/ui/core/mvc/Controller', 'sap/ui/model/json/JSONModel', 'sap
 					type: "column", //"vertical_bullet", //"bullet", //"column", //"bar",  //
 					properties: {
 						plotArea: {
-							showGap: true
+							//showGap: true
+							drawingEffect: "glossy"
+						},
+							title: {
+							text: "test",
+							visible: false
+						},
+						valueAxis: {
+							title:{
+								text: "PTQ(%)",
+								visible: true
+							}
 						}
+							// dataPointStyle:{
+							// 	 "rules": [{
+				   //                 "dataContext" : [{ "Region" : "R2"}, {"Area": "A7"}, {"Territory": "T5"} ],
+				   //                 "properties"  : { "color" : "yellow" },
+				   //                 "displayName" : "My Data"
+				   //            }],
+				   //            "others" : {
+			    //                 "properties" : { "color" : "lightblue" },
+			    //                 "displayName": "Others"
+			    //           }
+							// }
 					},
-					feedItems: [{
+					
+					areaFeedItems: [{
 						'uid': "primaryValues", //"actualValues",
 						'type': "Measure",
 						'values': ["PTQ"]
@@ -111,6 +134,24 @@ sap.ui.define(['sap/ui/core/mvc/Controller', 'sap/ui/model/json/JSONModel', 'sap
 						'uid': "axisLabels", // "categoryAxis", for the vertical bulllet chart
 						'type': "Dimension",
 						'values': ["Area"]
+					}],
+						regionFeedItems: [{
+						'uid': "primaryValues", //"actualValues",
+						'type': "Measure",
+						'values': ["PTQ"]
+					}, {
+						'uid': "axisLabels", // "categoryAxis", for the vertical bulllet chart
+						'type': "Dimension",
+						'values': ["Region"]
+					}],
+						territoryFeedItems: [{
+						'uid': "primaryValues", //"actualValues",
+						'type': "Measure",
+						'values': ["PTQ"]
+					}, {
+						'uid': "axisLabels", // "categoryAxis", for the vertical bulllet chart
+						'type': "Dimension",
+						'values': ["Territory"]
 					}]
 				},
 				vizFrame2: {
@@ -155,7 +196,7 @@ sap.ui.define(['sap/ui/core/mvc/Controller', 'sap/ui/model/json/JSONModel', 'sap
 					},
 					regionDataset: {
 						dimensions: [{
-							name: 'Area',
+							name: 'Region',
 							value: "{Area}"
 						}],
 						measures: [{
@@ -173,7 +214,7 @@ sap.ui.define(['sap/ui/core/mvc/Controller', 'sap/ui/model/json/JSONModel', 'sap
 					},
 					territoryDataset: {
 						dimensions: [{
-							name: 'Area',
+							name: 'Territory',
 							value: "{Area}"
 						}],
 						measures: [{
@@ -193,7 +234,29 @@ sap.ui.define(['sap/ui/core/mvc/Controller', 'sap/ui/model/json/JSONModel', 'sap
 					type: "vertical_bullet", //"bullet", //"column", //"bar",  //
 					properties: {
 						plotArea: {
-							showGap: true
+						// 	showGap: true
+							drawingEffect: "glossy",
+							dataPointStyle:{
+								 "rules": [{
+				                    "dataContext" : [{ "Region" : "R2"}, {"Area": "A7"}, {"Territory": "T5"} ],
+				                    "properties"  : { "color" : "blue" },
+				                    "displayName" : "My Data"
+				               }],
+				               "others" : {
+			                    "properties" : { "color" : "lightblue" },
+			                    "displayName": "Others"
+			               }
+							}
+						},
+						title: {
+							text: "test",
+							visible: false
+						},
+							valueAxis: {
+							title:{
+								text: "Booking/Quota",
+								visible: true
+							}
 						}
 					},
 					feedItems: [{
@@ -208,6 +271,45 @@ sap.ui.define(['sap/ui/core/mvc/Controller', 'sap/ui/model/json/JSONModel', 'sap
 						'uid': "targetValues",
 						'type': "Measure",
 						'values': ["Quota"]
+					}],
+						areaFeedItems: [{
+						'uid': "actualValues",
+						'type': "Measure",
+						'values': ["Booking"] // ["PTQ"]
+					}, {
+						'uid': "categoryAxis",
+						'type': "Dimension",
+						'values': ["Area"]
+					}, { //for the bullet chart
+						'uid': "targetValues",
+						'type': "Measure",
+						'values': ["Quota"]
+					}],
+						regionFeedItems: [{
+						'uid': "actualValues",
+						'type': "Measure",
+						'values': ["Booking"] // ["PTQ"]
+					}, {
+						'uid': "categoryAxis",
+						'type': "Dimension",
+						'values': ["Region"]
+					}, { //for the bullet chart
+						'uid': "targetValues",
+						'type': "Measure",
+						'values': ["Quota"]
+					}],
+						territoryFeedItems: [{
+						'uid': "actualValues",
+						'type': "Measure",
+						'values': ["Booking"] // ["PTQ"]
+					}, {
+						'uid': "categoryAxis",
+						'type': "Dimension",
+						'values': ["Territory"]
+					}, { //for the bullet chart
+						'uid': "targetValues",
+						'type': "Measure",
+						'values': ["Quota"]
 					}]
 				},
 				table: {
@@ -218,7 +320,9 @@ sap.ui.define(['sap/ui/core/mvc/Controller', 'sap/ui/model/json/JSONModel', 'sap
 					areaBindingPath: "/Areas",
 					regionBindingPath: "/Regions",
 					territoryBindingPath: "/Territories",
-					columnLabelTexts: ["Area", "PTQ"],
+					areaColumnLabelTexts: ["Area", "PTQ(%)"],
+					regionColumnLabelTexts: ["Region", "PTQ(%)"],
+					territoryColumnLabelTexts: ["Territory", "PTQ(%)"],
 					templateCellLabelTexts: ["{Area}", "{PTQ}"],
 					modulePath: "/model/localData/ChartContainerData1.json"
 				},
@@ -231,6 +335,9 @@ sap.ui.define(['sap/ui/core/mvc/Controller', 'sap/ui/model/json/JSONModel', 'sap
 					regionBindingPath: "/Regions",
 					territoryBindingPath: "/Territories",
 					columnLabelTexts: ["Area", "Booking", "Quota"], //["Area", "PTQ"],
+					areaColumnLabelTexts: ["Area", "Booking", "Quota"],
+					regionColumnLabelTexts: ["Region", "Booking", "Quota"],
+					territoryColumnLabelTexts: ["Territory", "Booking", "Quota"],
 					templateCellLabelTexts: ["{Area}", "{Booking}", "{Quota}"], //["{Area}", "{PTQ}"],
 					modulePath: "/model/localData/ChartContainerData2.json"
 				}
@@ -266,6 +373,24 @@ sap.ui.define(['sap/ui/core/mvc/Controller', 'sap/ui/model/json/JSONModel', 'sap
 				this.oTable2.destroyColumns();
 				this.oTable.destroyColumns();
 			},
+			
+ //onAfterRendering: function() {
+ //   	var oTable = this.oTable;
+ //     var aItems = oTable.getItems();
+ //     if (aItems && aItems.length > 0) {
+ //       for (var i = 0; i < aItems.length; i++) {
+ //       //  var aCells = aItems[i].getCells();
+ //        // if (aCells[1].getText() === "red") {
+ //         	//you can set the style via Jquery
+ //           //$("#" + aItems[i].getId()).css("background-color", "red");
+ //           //or add the style
+ //           aItems[i].addStyleClass("green");
+ //        // }
+ //       }
+ //     }
+ //   },
+			
+			
 			onChangeDataScope: function(oEvt) {
 				var oScopeToggleBtn = oEvt.getSource();
 				//	var oVizFrame = this.getView().byId(this._constants.vizFrame.id);
@@ -274,11 +399,11 @@ sap.ui.define(['sap/ui/core/mvc/Controller', 'sap/ui/model/json/JSONModel', 'sap
 					oScopeToggleBtn.setIcon("sap-icon://personnel-view");
 					this.viewScope = "companyData";
 					this.resetChart();
-					var oVizFrame2 = this._constants.vizFrame2;
+					var oVizFrame2 = this._constants.vizFrame;
 					this._updateVizFrame(this.oVizFrame, "area", oVizFrame2);
 					this._updateVizFrame(this.oVizFrame2, "region", oVizFrame2);
 					this._updateVizFrame(this.oVizFrame3, "territory", oVizFrame2);
-					var table2 = this._constants.table2;
+					var table2 = this._constants.table;
 					this._updateTable(this.oTable, "area", table2);
 					this._updateTable(this.oTable2, "region", table2);
 					this._updateTable(this.oTable3, "territory", table2);
@@ -287,12 +412,12 @@ sap.ui.define(['sap/ui/core/mvc/Controller', 'sap/ui/model/json/JSONModel', 'sap
 					oScopeToggleBtn.setIcon("sap-icon://company-view");
 					this.viewScope = "ownData";
 					this.resetChart();
-					var oVizFrame = this._constants.vizFrame;
+					var oVizFrame = this._constants.vizFrame2;
 					this._updateVizFrame(this.oVizFrame, "area", oVizFrame);
-					this._updateVizFrame(this.oVizFrame2, oVizFrame);
-					this._updateVizFrame(this.oVizFrame3, oVizFrame);
+					this._updateVizFrame(this.oVizFrame2,"region", oVizFrame);
+					this._updateVizFrame(this.oVizFrame3, "territory", oVizFrame);
 
-					var table = this._constants.table;
+					var table = this._constants.table2;
 					this._updateTable(this.oTable, "area", table);
 					this._updateTable(this.oTable2, "region", table);
 					this._updateTable(this.oTable3, "territory", table);
@@ -303,24 +428,39 @@ sap.ui.define(['sap/ui/core/mvc/Controller', 'sap/ui/model/json/JSONModel', 'sap
 				MessageToast.show("time changed");
 			},
 			onInit: function() {
-
+				
+				
+				//update the view model
+				var aData = {
+					"title1": "7 of 8",
+					"title2": "2 of 8",
+					"title3": "5 of 8"
+				};
+				var oModel = new JSONModel();
+				oModel.setData(aData);
+				this.getView().setModel( oModel, "model1");
+				
+				
+				//this.getView().getModel("model1").setProperty("/title1","wangmo");
+				var oVizFrame = this._constants.vizFrame2;
+				var table2 = this._constants.table2;
 				//first chart and table for area
 				this.oVizFrame = this.getView().byId(this._constants.vizFrame.id);
 				this.oTable = this.getView().byId(this._constants.table.id);
-				this._updateVizFrame(this.oVizFrame, "area");
-				this._updateTable(this.oTable, "area");
+				this._updateVizFrame(this.oVizFrame, "area", oVizFrame);
+				this._updateTable(this.oTable, "area", table2);
 
 				//for the second chart and table for region
 				this.oVizFrame2 = this.getView().byId(this._constants.vizFrame.id2);
 				this.oTable2 = this.getView().byId(this._constants.table.id2);
-				this._updateVizFrame(this.oVizFrame2, "region");
-				this._updateTable(this.oTable2, "region");
+				this._updateVizFrame(this.oVizFrame2, "region", oVizFrame);
+				this._updateTable(this.oTable2, "region", table2);
 
 				//for the third chart and table -> territory	
 				this.oVizFrame3 = this.getView().byId(this._constants.vizFrame.id3);
 				this.oTable3 = this.getView().byId(this._constants.table.id3);
-				this._updateVizFrame(this.oVizFrame3, "territory");
-				this._updateTable(this.oTable3, "territory");
+				this._updateVizFrame(this.oVizFrame3, "territory", oVizFrame);
+				this._updateTable(this.oTable3, "territory", table2);
 			},
 			/* ============================================================ */
 			/* Helper Methods                                               */
@@ -342,15 +482,23 @@ sap.ui.define(['sap/ui/core/mvc/Controller', 'sap/ui/model/json/JSONModel', 'sap
 					switch (chartType) {
 						case "area":
 						oDataset = new FlattenedDataset(oVizFrame.areaDataset);
+						this._addFeedItems(vizFrame, oVizFrame.areaFeedItems);
+					//	vizFrame.setVizProperties(oVizFrame.properties);
 							break;
 						case "region":
 							oDataset = new FlattenedDataset(oVizFrame.regionDataset);
+							this._addFeedItems(vizFrame, oVizFrame.regionFeedItems);
+						//	vizFrame.setVizProperties(oVizFrame.properties);
 							break;
 						case "territory":
 							oDataset = new FlattenedDataset(oVizFrame.territoryDataset);
+							this._addFeedItems(vizFrame, oVizFrame.territoryFeedItems);
+						//	vizFrame.setVizProperties(oVizFrame.properties);
 							break;
 						default:
 							oDataset = new FlattenedDataset(oVizFrame.areaDataset);
+							this._addFeedItems(vizFrame, oVizFrame.areaFeedItems);
+					//		vizFrame.setVizProperties(oVizFrame.properties);
 							break;
 					}
 				} 
@@ -360,7 +508,7 @@ sap.ui.define(['sap/ui/core/mvc/Controller', 'sap/ui/model/json/JSONModel', 'sap
 				vizFrame.setVizProperties(oVizFrame.properties);
 				vizFrame.setDataset(oDataset);
 				vizFrame.setModel(oModel);
-				this._addFeedItems(vizFrame, oVizFrame.feedItems);
+				//this._addFeedItems(vizFrame, oVizFrame.feedItems);
 				vizFrame.setVizType(oVizFrame.type);
 
 				var oPopOver = this.getView().byId("idPopOver");
@@ -378,9 +526,28 @@ sap.ui.define(['sap/ui/core/mvc/Controller', 'sap/ui/model/json/JSONModel', 'sap
 				}
 				var oTablePath = jQuery.sap.getModulePath(this._constants.sampleName, oTable.modulePath);
 				var oTableModel = new JSONModel(oTablePath);
-				var aColumns = this._createTableColumns(oTable.columnLabelTexts);
+				var aColumns; // = this._createTableColumns(oTable.columnLabelTexts);
+				
+				if (tableType) {
+					switch (tableType) {
+						case "area":
+							aColumns = this._createTableColumns(oTable.areaColumnLabelTexts);
+						
+							break;
+						case "region":
+							aColumns = this._createTableColumns(oTable.regionColumnLabelTexts);
+							break;
+						case "territory":
+							aColumns = this._createTableColumns(oTable.territoryColumnLabelTexts);
+							break;
+						default:
+							aColumns = this._createTableColumns(oTable.areaColumnLabelTexts);
+							break;
+					}
+				}
 
 				for (var i = 0; i < aColumns.length; i++) {
+				//	aColumns[i].addStyleClass("green");
 					table.addColumn(aColumns[i]);
 				}
 
@@ -409,7 +576,7 @@ sap.ui.define(['sap/ui/core/mvc/Controller', 'sap/ui/model/json/JSONModel', 'sap
 				}
 
 				table.setModel(oTableModel);
-
+				table.addStyleClass("tableClass");
 				//	table.bindElement("/Areas");
 			},
 			/**
@@ -459,7 +626,10 @@ sap.ui.define(['sap/ui/core/mvc/Controller', 'sap/ui/model/json/JSONModel', 'sap
 				var oProps = {};
 				for (var i = 0; i < propValues.length; i++) {
 					oProps[prop] = propValues[i];
-					aControls.push(new Control(oProps));
+					var oCtrl = new Control(oProps);
+					//oCtrl.getParent().getParent().addStyleClass("green");
+					aControls.push(oCtrl);
+					//aControls.push(new Control(oProps));
 				}
 				return aControls;
 			}

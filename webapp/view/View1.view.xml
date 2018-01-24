@@ -12,9 +12,8 @@
                             <m:items>
                                 <!--<core:Item text="{name}" key="{key}" />-->
                                  <core:Item text="YTD" key="ytd" />
-                                 <core:Item text="MTD" key="mtd" />
-                                 <core:Item text="Day" key="day" />
-                                 <core:Item text="Year" key="year" />
+                                 <core:Item text="Monthy" key="monthly" />
+                                 <core:Item text="Yearly" key="yearly" />
                             </m:items>
                         </m:Select>
 			<m:ToolbarSpacer/>
@@ -32,7 +31,7 @@
 							<!--	<layout:GridData span="L0 M0 S12" />-->
 							<!--</m:layoutData>-->
 					<ChartContainer id="chartContainer" showFullScreen="true" showPersonalization="false" autoAdjustHeight="true"
-						personalizationPress="attachPersonalizationPress" contentChange="attachContentChange" title="1st out of 10">
+						personalizationPress="attachPersonalizationPress" contentChange="attachContentChange" title="{model1>/title1}">
 						<content>
 						
 							<ChartContainerContent icon="sap-icon://line-chart" title="Line Chart">
@@ -49,7 +48,7 @@
 					</ChartContainer>
 					<!--<m:Text text="test"></m:Text>-->
 					<ChartContainer id="chartContainer2" showFullScreen="true" showPersonalization="false" autoAdjustHeight="true"
-						personalizationPress="attachPersonalizationPress" contentChange="attachContentChange" title="Revenue2">
+						personalizationPress="attachPersonalizationPress" contentChange="attachContentChange" title="{model1>/title2}">
 						<content>
 							<ChartContainerContent icon="sap-icon://line-chart" title="Line Chart2">
 								<content>
@@ -65,8 +64,8 @@
 							</ChartContainer>
 							
 					<m:VBox>
-								<ChartContainer id="chartContainer3" showFullScreen="true" showPersonalization="false" autoAdjustHeight="true"
-						personalizationPress="attachPersonalizationPress" contentChange="attachContentChange" title="Revenue2">
+					<ChartContainer id="chartContainer3" showFullScreen="true" showPersonalization="false" autoAdjustHeight="true"
+						personalizationPress="attachPersonalizationPress" contentChange="attachContentChange" title="{model1>/title3}">
 						<content>
 								<ChartContainerContent icon="sap-icon://table-view" title="Table">
 								<content>
@@ -82,8 +81,6 @@
 									</viz:VizFrame>
 								</content>
 							</ChartContainerContent>
-						
-										
 							</content>
 						
 							</ChartContainer>
